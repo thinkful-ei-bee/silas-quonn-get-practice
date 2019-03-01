@@ -1,13 +1,13 @@
 'use strict';
 
 // put your own value below!
-const apiKey = 'AIzaSyDEBib065rkx6rW5cWNDOi2lgScEtgaqT8'; 
+const apiKey = 'AIzaSyBegY8hyO_96zkRSvkyeDaArUtDwI4QgwA'; 
 const searchURL = 'https://www.googleapis.com/youtube/v3/search';
 
 
 function formatQueryParams(params) {
   const queryItems = Object.keys(params)
-    .map(key => `${encodeURIComponent(key)}=${encodeURIComponent(params[key])}`)
+    .map(key => `${encodeURIComponent(key)}=${encodeURIComponent(params[key])}`);
   return queryItems.join('&');
 }
 
@@ -19,7 +19,7 @@ function getYouTubeVideos(query, maxResults=10) {
     part: 'snippet',
     maxResults
   };
-  const queryString = formatQueryParams(params)
+  const queryString = formatQueryParams(params);
   const url = searchURL + '?' + queryString;
 
   fetch(url)
