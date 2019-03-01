@@ -11,12 +11,15 @@
     <div class="container">
         <h1>Dog API: A Simple Example</h1>
 
-        <form>
+        <form id="dog-counts">
+          <label for="counter">Number of Dogs: </label>
+          <input type="text" name="counter" id="counter">
           <input type="submit" value="Get a dog pic!">
         </form>
         <section class="results hidden">
           <h2>Look at this dog!</h2>
-          <img class="results-img" alt="placeholder">
+          <div class="results-bin"></div>
+          <img class="results-img" alt="placeholder"></li>
         </section>
     </div>
     <script src="index.js"></script>
