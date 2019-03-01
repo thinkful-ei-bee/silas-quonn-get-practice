@@ -1,25 +1,34 @@
-'use strict';
+"use strict";
+
+const DATASTORE = {
+  count: 3,
+  dogImgs: []
+};
 
 function fetchFunction() {
-  fetch('https://dog.ceo/api/breeds/image/random')
+  fetch(`https://dog.ceo/api/breeds/image/random`)
     .then(response => response.json())
     .then(jsonObj => {
-      console.log(jsonObj);
-      displayResult(jsonObj);})
-    .catch(error => alert('You have an error'));
+      DATASTORE.dogImgs.push(jsonObj);
+      render();
+    })
+    .catch(error => alert("You have an error"));
 }
 
-function displayResult(responseJson){
-  
-  $('.results-img').replaceWith(`<img src="${responseJson.message}" class="results-img"img>`);
-
-  $('.results').removeClass('hidden');
+function render() {
+  const temp = DATASTORE.dogImgs.map(function(elem) {
+    return `<img src=${elem.message}>`;
+  });
+  $(".img-container").html(temp);
 }
 
-function pressTheButton(){
-  $('form').submit(event => {
+function pressTheButton() {
+  $("form").submit(event => {
+    DATASTORE.count = $("#userInput").val();
     event.preventDefault();
-    fetchFunction();
+    for (let i = 0; i < DATASTORE.count; i++) {
+      fetchFunction();
+    }
   });
 }
 
