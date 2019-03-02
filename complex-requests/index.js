@@ -32,9 +32,9 @@ function displayResults(responseJson) {
 }
 
 
-function getParkResults(query, maxResults=10) {
+function getParkResults(query, maxResults=10, stateSearch) {
   const params = {
-    //parkCode: 'acad',
+    stateCode: stateSearch,
     api_key: apiKey,
     q: query,
     //part: 'snippet',
@@ -63,7 +63,8 @@ function watchForm() {
     event.preventDefault();
     const searchTerm = $('#js-search-term').val();
     const maxResults = $('#js-max-results').val();
-    getParkResults(searchTerm, maxResults);
+    const stateSearch = $('#js-state-search').val();
+    getParkResults(searchTerm, maxResults, stateSearch);
   });
 }
 
